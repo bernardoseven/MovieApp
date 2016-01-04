@@ -1,0 +1,25 @@
+<div class="hero">
+  <div class="container">
+    <h2>Interstellar</h2>
+    <p>Former NASA pilot Cooper (Matthew McConaughey) and a team of researchers travel across the galaxy to find out which of three planets could be mankind's new home.</p>
+    <a href="#">Read More</a>
+  </div>
+</div>
+
+<div class="main">
+  <div class="container">
+  <h2>Popular Films</h2>
+
+    
+   
+<% @movies.each do |t| %>
+    <div class="movie">
+<%= image_tag t.image %>
+<h3><%= t.title %></h3>
+<p> <%= t.release_year %> </p>
+<% end %>
+    </div>
+    
+      
+  </div>
+</div>
