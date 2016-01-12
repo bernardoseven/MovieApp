@@ -25,6 +25,15 @@ class Api::MoviesController < ApplicationController
         end
     end
     
+    def destroy
+        list = Movie.find(params[:id])
+        list.destroy
+        render json: {
+            status: 200,
+            message: "Succefully deleted movie"
+        }.to_json
+    end
+    
     private
     def list_params
         params.require("movie").permit("title")
