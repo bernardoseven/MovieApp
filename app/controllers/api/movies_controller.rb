@@ -1,4 +1,5 @@
 class Api::MoviesController < ApplicationController
+    skip_before_filter :verify_authenticity_token
     def index
         render json: Movie.all
     end
@@ -6,5 +7,19 @@ class Api::MoviesController < ApplicationController
     def show
         list = Movie.find(params[:id])
         render json: list
+    end
+    
+    def create
+        list = Movie.new(list_params)
+        if list.save
+            head 200
+        else
+            head 500
+        end
+    end
+    
+    private
+    def list_params
+        params.require("movie").permit("title")
     end
 end
