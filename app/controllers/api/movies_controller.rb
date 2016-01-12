@@ -25,6 +25,24 @@ class Api::MoviesController < ApplicationController
         end
     end
     
+    def update
+        list = Movie.find(params[:id])
+        if list.update(list_params)
+            render json: {
+                status: 200,
+                message: "Succefully updated",
+                movie: list
+            }.to_json
+        else
+            render json: {
+                status: 500,
+                message: "The movie could not be updated",
+                movie: list
+            }.to_json
+        end
+                
+    end
+    
     def destroy
         list = Movie.find(params[:id])
         list.destroy
