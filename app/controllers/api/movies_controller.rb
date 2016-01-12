@@ -1,5 +1,5 @@
 class Api::MoviesController < ApplicationController
     def index
-        render json: Movies.all
+        render json: Movie.all
     end
 end
