@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+  ################
+  # Este código habilita uri's para levantar api con todas las acciones #
+  # Acciones como get, post, update, delete, por eso utilizamos resources :movies
+namespace :api do
+  resources :movies
+end
+  ################
 get '/movies' => 'movies#index'
 
 get '/movies/:id' => 'movies#show', as: :movie
@@ -8,6 +15,8 @@ get '/movies/:id' => 'movies#show', as: :movie
 get '/actors' => 'actors#index'
 
 get '/actors/:id' => 'actors#show', as: :actor
+
+  # resources :movies
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
