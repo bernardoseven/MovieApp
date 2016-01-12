@@ -12,9 +12,16 @@ class Api::MoviesController < ApplicationController
     def create
         list = Movie.new(list_params)
         if list.save
-            head 200
+            render json: {
+                status: 200, 
+                message: "Succefully created movie",
+                movie: list
+            }.to_json
         else
-            head 500
+            render json: {
+                status: 500,
+                errors: list.errors
+            }.to_json
         end
     end
     
